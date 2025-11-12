@@ -1,10 +1,23 @@
-import { currentUser } from "@clerk/nextjs/server";
+"use client";
+
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 
-export default async function DashboardPage() {
-  const user = await currentUser();
+export default function DashboardPage() {
+  const { user } = useUser();
+  const skills = useQuery(api.skills.getSkills);
+  const projects = useQuery(api.projects.getProjects);
+
+  // Calculate statistics
+  const totalSkills = skills?.length || 0;
+  const totalProjects = projects?.length || 0;
+  const averageLevel = skills && skills.length > 0
+    ? (skills.reduce((sum, skill) => sum + skill.level, 0) / skills.length).toFixed(1)
+    : "-";
 
   return (
     <div className="container py-10">
@@ -25,7 +38,7 @@ export default async function DashboardPage() {
               <CardDescription>Skills you're tracking</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold">0</div>
+              <div className="text-4xl font-bold">{totalSkills}</div>
               <Button asChild className="mt-4 w-full">
                 <Link href="/skills">Manage Skills</Link>
               </Button>
@@ -38,7 +51,7 @@ export default async function DashboardPage() {
               <CardDescription>Projects in your portfolio</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold">0</div>
+              <div className="text-4xl font-bold">{totalProjects}</div>
               <Button asChild className="mt-4 w-full">
                 <Link href="/projects">Manage Projects</Link>
               </Button>
@@ -51,32 +64,33 @@ export default async function DashboardPage() {
               <CardDescription>Your overall proficiency</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold">-</div>
+              <div className="text-4xl font-bold">{averageLevel}</div>
               <p className="text-sm text-muted-foreground mt-4">
-                Add skills to see your average
+                {totalSkills === 0 ? "Add skills to see your average" : "Out of 5.0"}
               </p>
             </CardContent>
           </Card>
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Start</CardTitle>
-            <CardDescription>
-              Get started by adding your first skill or project
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-col sm:flex-row gap-4">
-            <Button asChild>
-              <Link href="/skills">Add Your First Skill</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/projects">Add Your First Project</Link>
-            </Button>
-          </CardContent>
-        </Card>
+        {totalSkills === 0 && totalProjects === 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Quick Start</CardTitle>
+              <CardDescription>
+                Get started by adding your first skill or project
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-col sm:flex-row gap-4">
+              <Button asChild>
+                <Link href="/skills">Add Your First Skill</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/projects">Add Your First Project</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );
 }
-
