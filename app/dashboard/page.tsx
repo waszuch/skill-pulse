@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { SkillLevelsChart } from "@/components/skill-levels-chart";
 import { ProjectsTechChart } from "@/components/projects-tech-chart";
+import { LoadingSpinner } from "@/components/loading-spinner";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
 
@@ -17,9 +18,7 @@ export default function DashboardPage() {
   if (skills === undefined || projects === undefined) {
     return (
       <div className="container py-10">
-        <div className="flex items-center justify-center min-h-[400px]">
-          <p className="text-muted-foreground">Loading dashboard...</p>
-        </div>
+        <LoadingSpinner />
       </div>
     );
   }

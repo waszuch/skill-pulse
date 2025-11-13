@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { SkillCard } from "@/components/skill-card";
 import { SkillDialog } from "@/components/skill-dialog";
+import { LoadingSpinner } from "@/components/loading-spinner";
+import { ErrorMessage } from "@/components/error-message";
 import type { SkillFormData } from "@/lib/schemas";
 import type { Id } from "@/convex/_generated/dataModel";
 import { Plus } from "lucide-react";
@@ -83,9 +85,7 @@ export default function SkillsPage() {
   if (skills === undefined) {
     return (
       <div className="container py-10">
-        <div className="flex items-center justify-center min-h-[400px]">
-          <p className="text-muted-foreground">Loading skills...</p>
-        </div>
+        <LoadingSpinner />
       </div>
     );
   }

@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/project-card";
 import { ProjectDialog } from "@/components/project-dialog";
+import { LoadingSpinner } from "@/components/loading-spinner";
 import type { ProjectFormData } from "@/lib/schemas";
 import type { Id } from "@/convex/_generated/dataModel";
 import { Plus } from "lucide-react";
@@ -87,9 +88,7 @@ export default function ProjectsPage() {
   if (projects === undefined) {
     return (
       <div className="container py-10">
-        <div className="flex items-center justify-center min-h-[400px]">
-          <p className="text-muted-foreground">Loading projects...</p>
-        </div>
+        <LoadingSpinner />
       </div>
     );
   }
