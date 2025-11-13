@@ -1,7 +1,6 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
-// Get all skills for the current user
 export const getSkills = query({
   args: {},
   handler: async (ctx) => {
@@ -20,7 +19,6 @@ export const getSkills = query({
   },
 });
 
-// Get a single skill by ID
 export const getSkill = query({
   args: { id: v.id("skills") },
   handler: async (ctx, args) => {
@@ -39,7 +37,6 @@ export const getSkill = query({
   },
 });
 
-// Create a new skill
 export const createSkill = mutation({
   args: {
     name: v.string(),
@@ -52,7 +49,6 @@ export const createSkill = mutation({
       throw new Error("Not authenticated");
     }
 
-    // Validate level
     if (args.level < 1 || args.level > 5) {
       throw new Error("Level must be between 1 and 5");
     }
@@ -71,7 +67,6 @@ export const createSkill = mutation({
   },
 });
 
-// Update an existing skill
 export const updateSkill = mutation({
   args: {
     id: v.id("skills"),
@@ -90,7 +85,6 @@ export const updateSkill = mutation({
       throw new Error("Skill not found or unauthorized");
     }
 
-    // Validate level
     if (args.level < 1 || args.level > 5) {
       throw new Error("Level must be between 1 and 5");
     }
@@ -106,7 +100,6 @@ export const updateSkill = mutation({
   },
 });
 
-// Delete a skill
 export const deleteSkill = mutation({
   args: { id: v.id("skills") },
   handler: async (ctx, args) => {

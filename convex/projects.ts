@@ -1,7 +1,6 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
-// Get all projects for the current user
 export const getProjects = query({
   args: {},
   handler: async (ctx) => {
@@ -20,7 +19,6 @@ export const getProjects = query({
   },
 });
 
-// Get a single project by ID
 export const getProject = query({
   args: { id: v.id("projects") },
   handler: async (ctx, args) => {
@@ -39,7 +37,6 @@ export const getProject = query({
   },
 });
 
-// Create a new project
 export const createProject = mutation({
   args: {
     title: v.string(),
@@ -68,7 +65,6 @@ export const createProject = mutation({
   },
 });
 
-// Update an existing project
 export const updateProject = mutation({
   args: {
     id: v.id("projects"),
@@ -100,7 +96,6 @@ export const updateProject = mutation({
   },
 });
 
-// Delete a project
 export const deleteProject = mutation({
   args: { id: v.id("projects") },
   handler: async (ctx, args) => {

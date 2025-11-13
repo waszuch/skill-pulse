@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
       <section className="flex-1 flex items-center justify-center bg-gradient-to-b from-background to-muted/20">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-8 text-center">
@@ -35,7 +34,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
       <section id="features" className="py-20 bg-muted/30">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
@@ -105,7 +103,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
       <section id="about" className="py-20">
         <div className="container px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center space-y-6">
@@ -131,7 +128,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-6 text-center">
@@ -148,7 +144,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-8 border-t">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
