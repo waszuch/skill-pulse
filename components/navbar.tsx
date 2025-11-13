@@ -19,7 +19,7 @@ export function Navbar() {
 
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-xl font-bold">SkillPulse</span>
@@ -48,39 +48,39 @@ export function Navbar() {
             </div>
           </SignedOut>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           <ThemeToggle />
           <SignedIn>
             <div className="md:hidden">
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
                     <Menu className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
+                <SheetContent className="p-0">
+                  <SheetHeader className="px-6 pt-6 pb-4">
                     <SheetTitle>Menu</SheetTitle>
                   </SheetHeader>
-                  <div className="flex flex-col gap-4 mt-6">
+                  <div className="flex flex-col gap-1 px-4 pb-4">
                     <Link
                       href="/dashboard"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm font-medium"
+                      className="text-sm font-medium px-4 py-3 rounded-md hover:bg-accent transition-colors"
                     >
                       Dashboard
                     </Link>
                     <Link
                       href="/skills"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm font-medium"
+                      className="text-sm font-medium px-4 py-3 rounded-md hover:bg-accent transition-colors"
                     >
                       Skills
                     </Link>
                     <Link
                       href="/projects"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm font-medium"
+                      className="text-sm font-medium px-4 py-3 rounded-md hover:bg-accent transition-colors"
                     >
                       Projects
                     </Link>
@@ -110,36 +110,36 @@ export function Navbar() {
             <div className="md:hidden">
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
                     <Menu className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
+                <SheetContent className="p-0">
+                  <SheetHeader className="px-6 pt-6 pb-4">
                     <SheetTitle>Menu</SheetTitle>
                   </SheetHeader>
-                  <div className="flex flex-col gap-4 mt-6">
+                  <div className="flex flex-col gap-1 px-4 pb-4">
                     <Link
                       href="#features"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm font-medium"
+                      className="text-sm font-medium px-4 py-3 rounded-md hover:bg-accent transition-colors"
                     >
                       Features
                     </Link>
                     <Link
                       href="#about"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm font-medium"
+                      className="text-sm font-medium px-4 py-3 rounded-md hover:bg-accent transition-colors"
                     >
                       About
                     </Link>
-                    <div className="flex flex-col gap-2 pt-4 border-t">
-                      <Button variant="ghost" asChild>
+                    <div className="flex flex-col gap-2 pt-4 mt-4 border-t px-4">
+                      <Button variant="ghost" asChild className="justify-start">
                         <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
                           Sign In
                         </Link>
                       </Button>
-                      <Button asChild>
+                      <Button asChild className="justify-start">
                         <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}>
                           Get Started
                         </Link>

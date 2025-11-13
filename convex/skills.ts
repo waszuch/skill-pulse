@@ -6,7 +6,7 @@ export const getSkills = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      throw new Error("Not authenticated");
+      return [];
     }
 
     const skills = await ctx.db
@@ -24,7 +24,7 @@ export const getSkill = query({
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      throw new Error("Not authenticated");
+      return null;
     }
 
     const skill = await ctx.db.get(args.id);
