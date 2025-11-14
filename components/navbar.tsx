@@ -84,6 +84,16 @@ export function Navbar() {
                     >
                       Projects
                     </Link>
+                    <div className="flex items-center gap-3 pt-4 mt-4 border-t px-4">
+                      <span className="text-sm text-muted-foreground">Account:</span>
+                      <UserButton
+                        appearance={{
+                          elements: {
+                            avatarBox: "h-9 w-9",
+                          },
+                        }}
+                      />
+                    </div>
                   </div>
                 </SheetContent>
               </Sheet>
